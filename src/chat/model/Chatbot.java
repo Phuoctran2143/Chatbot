@@ -96,7 +96,13 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+		if(currentInput != null && !currentInput.equals(""))
+		{
+			hasContent = true;
+		}
+		
+		return hasContent;
 	}
 	
 	/**
@@ -107,8 +113,16 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean isPolitical = false;
+		for(String checkPolitical : politicalTopicList)
+		{
+			if(currentInput.equals(checkPolitical))
+			{
+				isPolitical = true;
+			}
+			return isPolitical;
 	}
+		
 	
 	
 	/**
