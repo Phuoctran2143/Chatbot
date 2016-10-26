@@ -30,12 +30,45 @@ public class Chatbot
 	
 	private void buildMemesList()
 	{
-		
+		memesList.add("doge");
+		memesList.add("cute animals");
+		memesList.add("grumpy cat");
+		memesList.add("dat boi");
+		memesList.add("willy wonka");
+		memesList.add("haramble");
+		memesList.add("john cena");
+		memesList.add("yolo");
+		memesList.add("fat cats");
+		memesList.add("michael jordan");
+		memesList.add("monkey");
+		memesList.add("Dog");
+		memesList.add("monster");
+		memesList.add("nice car");
+		memesList.add("plane");
+		memesList.add("waterfall");
+		memesList.add("basketball");
 	}
 	
 	private void buildPoliticalTopicsList()
 	{
-		
+		politicalTopicList.add("Demrocrat");
+		politicalTopicList.add("Republican");
+		politicalTopicList.add("11/8/16");
+		politicalTopicList.add("conservative");
+		politicalTopicList.add("Clinton");
+		politicalTopicList.add("Trump");
+		politicalTopicList.add("Kaine");
+		politicalTopicList.add("Pence");
+		politicalTopicList.add("Stein");
+		politicalTopicList.add("Johnson");
+		politicalTopicList.add("election");
+		politicalTopicList.add("elephant");
+		politicalTopicList.add("donkey");
+		politicalTopicList.add("America");
+		politicalTopicList.add("Capitalism");
+		politicalTopicList.add("Democarcy");
+		politicalTopicList.add("consitution");
+		politicalTopicList.add("law enforcement");
 	}
 	
 	/**
