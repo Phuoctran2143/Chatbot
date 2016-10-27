@@ -116,11 +116,15 @@ public class Chatbot
 		boolean isPolitical = false;
 		for(String checkPolitical : politicalTopicList)
 		{
-			if(currentInput.equals(checkPolitical))
+			
+		if(currentInput.equals(checkPolitical))
 			{
 				isPolitical = true;
 			}
-			return isPolitical;
+			
+			
+		}
+		return isPolitical;
 	}
 		
 	
@@ -132,7 +136,18 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean isMemes = false;
+		for(String checkMemes : memesList)
+		{
+			
+		if(currentInput.equals(checkMemes))
+			{
+				isMemes = true;
+			}
+			
+			
+		}
+		return isMemes;
 	}
 	
 	/**
