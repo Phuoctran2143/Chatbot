@@ -12,8 +12,11 @@ public class Chatbot
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
+	private ArrayList<String> keyboardMashChecker;
 	private String userName;
 	private String content;
+	
+	
 	
 	/**
 	 * Creates an instance of the Chatbot with the supplied username.
@@ -24,7 +27,13 @@ public class Chatbot
 		memesList = new ArrayList<String>();
 		politicalTopicList = new ArrayList<String>();
 		this.userName = new String(userName);
-		this.content = new String("topoic area of interest");
+		this.content = "content";
+		buildMemesList();
+		buildPoliticalTopicsList();
+		keyboardMashChecker();
+		
+		
+	
 		
 	}
 	
@@ -71,6 +80,11 @@ public class Chatbot
 		politicalTopicList.add("law enforcement");
 	}
 	
+	private void keyboardMashChecker()
+	{
+		
+	}
+	
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
 	 * otherwise returns true. 
@@ -97,7 +111,8 @@ public class Chatbot
 	public boolean contentChecker(String currentInput)
 	{
 		boolean hasContent = false;
-		if(currentInput != null && !currentInput.equals(""))
+		String tempInput = currentInput.toLowerCase();
+		if(tempInput.contains(content.toLowerCase()))
 		{
 			hasContent = true;
 		}
@@ -126,6 +141,35 @@ public class Chatbot
 		}
 		return isPolitical;
 	}
+	
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean isKeyBoard = false;
+		for(String checkKeyBoard : keyboardMashChecker)
+		{
+			if(currentInput.equals(checkKeyBoard))
+			{
+				isKeyBoard = true;
+			}
+			
+		}
+		return isKeyBoard;
+	}
+	
+	public boolean inputHTMLChecker(String currentInput)
+	{
+		boolean hasHTML = false;
+		for(String checkHTML : inputHTMLChecker)
+		{
+			if(currentInput.equals(checkHTML))
+			{ 
+				hasHTML = true;
+			}
+		}
+		return false;
+	}
+	
 		
 	
 	
@@ -156,7 +200,7 @@ public class Chatbot
 	 */
 	public String getUserName()
 	{
-		return null;
+		return userName;
 	}
 	
 	/**
@@ -165,7 +209,9 @@ public class Chatbot
 	 */
 	public String getContent()
 	{
-		return null;
+		
+		
+		return content;
 	}
 	
 	/**
@@ -174,7 +220,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 	
 	/**
@@ -183,7 +229,12 @@ public class Chatbot
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return memesList;
+	}
+	
+	public ArrayList<String> getKeyboardMashChecker()
+	{
+		return keyboardMashChecker;
 	}
 	
 	/**
@@ -192,6 +243,6 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		
+		this.content = content;
 	}
 }
