@@ -13,6 +13,7 @@ public class Chatbot
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private ArrayList<String> keyboardMashChecker;
+	private ArrayList<String> inputHTMLChecker;
 	private String userName;
 	private String content;
 	
@@ -82,7 +83,18 @@ public class Chatbot
 	
 	private void keyboardMashChecker()
 	{
-		
+		keyboardMashChecker.add("sdf");
+		keyboardMashChecker.add("dfg");
+		keyboardMashChecker.add("cvb");
+		keyboardMashChecker.add(",./");
+	}
+	
+	private void inputHTMLChecker()
+	{
+		inputHTMLChecker.add("<B> </B>");
+		inputHTMLChecker.add("<I> </i>");
+		inputHTMLChecker.add("<p>");
+		inputHTMLChecker.add("> </a>");
 	}
 	
 	/**
@@ -146,9 +158,9 @@ public class Chatbot
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean isKeyBoard = false;
-		for(String checkKeyBoard : keyboardMashChecker)
+		for(String keyboardMashChecker : keyboardMashChecker)
 		{
-			if(currentInput.equals(checkKeyBoard))
+			if(currentInput.equals(keyboardMashChecker))
 			{
 				isKeyBoard = true;
 			}
@@ -167,7 +179,7 @@ public class Chatbot
 				hasHTML = true;
 			}
 		}
-		return false;
+		return hasHTML;
 	}
 	
 		
