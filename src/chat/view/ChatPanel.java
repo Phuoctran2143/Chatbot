@@ -1,6 +1,6 @@
 package chat.view;
 
-public class frame
+public class ChatPanel
 {
 
 }
