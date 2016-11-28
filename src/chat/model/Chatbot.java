@@ -14,6 +14,7 @@ public class Chatbot
 	private ArrayList<String> politicalTopicList;
 	private ArrayList<String> keyboardMashChecker;
 	private ArrayList<String> inputHTMLChecker;
+	private ArrayList<String> quitChecker;
 	private String userName;
 	private String content;
 	
@@ -32,6 +33,7 @@ public class Chatbot
 		buildMemesList();
 		buildPoliticalTopicsList();
 		keyboardMashChecker();
+		quitChecker();
 		
 		
 	
@@ -95,6 +97,11 @@ public class Chatbot
 		inputHTMLChecker.add("<I> </i>");
 		inputHTMLChecker.add("<p>");
 		inputHTMLChecker.add("> </a>");
+	}
+	
+	private void quitChecker()
+	{
+		quitChecker.add("quit");
 	}
 	
 	/**
@@ -180,6 +187,22 @@ public class Chatbot
 			}
 		}
 		return hasHTML;
+	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean quitCheck = false;
+		String quit = "quit";
+		
+		if  (currentInput.equals(quit))
+		{
+			quitCheck = true;
+		}
+		else
+		{
+			quitCheck = false;
+		}
+		return quitCheck;
 	}
 	
 		
