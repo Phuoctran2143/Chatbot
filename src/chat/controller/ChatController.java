@@ -23,7 +23,7 @@ public class ChatController
 		
 	}
 	
-	private String useChatbotCheckers(String input)
+	public String useChatbotCheckers(String input)
 	{
 		String checkInput = "";
 		if(!stupidBot.quitChecker(input))
@@ -50,7 +50,11 @@ public class ChatController
 		}
 		if(stupidBot.inputHTMLChecker(input))
 		{
-			checkInput +="\nWe cannot do that!\n";
+			checkInput +="\nWe cannot do that!\n"; 
+		}
+		if (stupidBot.twitterChecker(input))
+		{
+			checkInput +="\nLets talk about twitter!\n";
 		}
 		if(stupidBot.quitChecker(input))
 		{
@@ -105,11 +109,13 @@ public class ChatController
 			randomTopic = "climate change";
 			break;
 		case 5: 
-			randomTopic = "asdfghjk";
+			randomTopic = "numbers";
 			break;
 		}
-	return randomTopicGenerator;
+	return randomTopic;
 	}
+	
+	
 }
 	
 	

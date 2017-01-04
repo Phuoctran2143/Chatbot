@@ -1,13 +1,12 @@
 package chat.model;
 
 import java.util.ArrayList;
-
 /**
- * Base version of the 2015 Chatbot class. Only stub methods are provided. Students will complete methods as part
- * of the project.
- * @author Cody Henrichsen
- * @version 1.0 10/14/15
+ * 
+ * @author Phuoc Tran
  */
+
+
 public class Chatbot
 {
 	private ArrayList<String> memesList;
@@ -19,26 +18,6 @@ public class Chatbot
 	private String content;
 	
 	
-	
-	/**
-	 * Creates an instance of the Chatbot with the supplied username.
-	 * @param userName The username for the chatbot.
-	 */
-	public Chatbot(String userName)
-	{
-		memesList = new ArrayList<String>();
-		politicalTopicList = new ArrayList<String>();
-		this.userName = new String(userName);
-		this.content = "content";
-		buildMemesList();
-		buildPoliticalTopicsList();
-		keyboardMashChecker();
-		quitChecker();
-		
-		
-	
-		
-	}
 	
 	private void buildMemesList()
 	{
@@ -104,6 +83,25 @@ public class Chatbot
 		quitChecker.add("quit");
 	}
 	
+	/**
+	 * Creates an instance of the Chatbot with the supplied username.
+	 * @param userName The username for the chatbot.
+	 */
+	public Chatbot(String userName)
+	{
+		memesList = new ArrayList<String>();
+		politicalTopicList = new ArrayList<String>();
+		this.userName = new String(userName);
+		this.content = "content";
+//		buildMemesList();
+//		buildPoliticalTopicsList();
+
+		
+		
+	
+		
+	}
+
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
 	 * otherwise returns true. 
@@ -178,15 +176,56 @@ public class Chatbot
 	
 	public boolean inputHTMLChecker(String currentInput)
 	{
-		boolean hasHTML = false;
-		for(String checkHTML : inputHTMLChecker)
+		boolean htmlChecker = false;
+		
+		int open = currentInput.indexOf("<");
+		int close = currentInput.indexOf(">");
+		if (open == -1 || close == -1)
 		{
-			if(currentInput.equals(checkHTML))
-			{ 
-				hasHTML = true;
-			}
+			return htmlChecker;
 		}
-		return hasHTML;
+		String tag = currentInput.substring(open +1, close);
+		int hasTag = currentInput.indexOf("<"+tag+">");
+		int secondOpen = currentInput.indexOf("</");
+		int secondClose = currentInput.indexOf(">", secondOpen);
+		String tag2 = currentInput.substring(secondOpen +2, secondClose);
+		int hasTag2 = currentInput.indexOf("</"+tag2+">");
+		
+		int hrefTag = currentInput.indexOf("=\"");
+		int closeHREFTag= currentInput.indexOf("\"", hrefTag);
+		
+		if (open == -1 && close == -1)
+		{
+			htmlChecker = false;
+		}
+	
+		else if (currentInput.contains("< >") || currentInput.contains("<>"))
+		{
+			htmlChecker = false;
+		}
+		
+		else if (currentInput.equals("<P>"))
+		{
+			htmlChecker = true;
+		}
+		
+		else if (hasTag2 == -1)
+		{
+			htmlChecker = false;
+		}
+		
+		else if (tag.equalsIgnoreCase(tag2))
+		{
+			htmlChecker = true;
+		}
+		
+		else if (hrefTag != -1 && currentInput.substring(open +1, hrefTag ).equals("A HREF") && closeHREFTag != -1 )
+		{
+			htmlChecker = true;
+		}
+		
+		
+		return htmlChecker;
 	}
 	
 	public boolean quitChecker(String currentInput)
@@ -205,7 +244,30 @@ public class Chatbot
 		return quitCheck;
 	}
 	
+	public boolean twitterChecker(String currentInput)
+	{
+		boolean twitterChecker = false;
+		int hashtagIndex = -99;
+		int userIndex = -99;
 		
+		hashtagIndex = currentInput.indexOf("#");
+		userIndex = currentInput.indexOf("@");
+		
+		if (userIndex == -1 && hashtagIndex == -1)
+		{
+			twitterChecker = false;
+		}
+		else
+		{
+			if (!currentInput.substring(hashtagIndex +1, hashtagIndex +2).equals(" ") || !currentInput.substring(userIndex +1, userIndex +2).equals(" "))
+			{
+				twitterChecker = true;
+			}
+		}
+	
+		
+		return twitterChecker;
+	}
 	
 	
 	/**
